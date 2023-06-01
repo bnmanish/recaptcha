@@ -27,8 +27,8 @@
     <div class="checkbox">
       <label><input type="checkbox" name="remember"> Remember me</label>
     </div>
-    <!-- site_key:6LejFFgmAAAAAC68RH3r9jr-Fx3XEFozaAOh_OEM -->
-    <div class="g-recaptcha" data-sitekey="6LejFFgmAAAAAC68RH3r9jr-Fx3XEFozaAOh_OEM"></div>
+    <!-- site_key -->
+    <div class="g-recaptcha" data-sitekey="SITE_KEY"></div>
     <button type="submit" class="btn btn-default" name="submit">Submit</button>
   </form>
 </div>
