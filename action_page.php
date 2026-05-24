@@ -1,19 +1,45 @@
 <?php
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-if(isset($_POST['submit'])){
+    $secretKey = "YOUR_SECRET_KEY_HERE";
 
-	// token sent by form when recaptcha checked
-	$recaptcha = $_POST['g-recaptcha-response'];
-	$SECRET_KEY="SECRET_KEY";
-	$url = "https://www.google.com/recaptcha/api/siteverify?secret=".$SECRET_KEY."&response=".$recaptcha;
-	$response = json_decode(file_get_contents($url),true);
-	// print_r($response);
-	// exit();
-	if($response['success']==true){
-		echo "reCaptcha verification done";
-	}else{
-		echo $response['error-codes'][0];
-	}
+    $captcha = $_POST['g-recaptcha-response'];
 
+    if (!$captcha) {
+        die("Please complete the CAPTCHA.");
+    }
+
+    $verifyURL = "https://www.google.com/recaptcha/api/siteverify";
+
+    $data = [
+        'secret' => $secretKey,
+        'response' => $captcha
+    ];
+
+    $options = [
+        'http' => [
+            'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+            'method' => 'POST',
+            'content' => http_build_query($data)
+        ]
+    ];
+
+    $context = stream_context_create($options);
+
+    $response = file_get_contents($verifyURL, false, $context);
+
+    $responseKeys = json_decode($response, true);
+
+    if ($responseKeys['success']) {
+
+        echo "Form submitted successfully!";
+
+    } else {
+
+        echo "reCAPTCHA verification failed.";
+
+    }
 }
+
+?>
