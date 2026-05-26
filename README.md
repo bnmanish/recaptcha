@@ -1,7 +1,11 @@
-# Steps to implement the recaptcha in html form
-Author: B N Manish
-GitHub: https://github.com/bnmanish
-LinkedIn: https://linkedin.com/in/bnmanish
+# Steps to implement the recaptcha in form
+
+## Author
+
+**B N Manish**
+
+- GitHub: [bnmanish](https://github.com/bnmanish)
+- LinkedIn: [B N Manish](https://www.linkedin.com/in/bnmanish/)
 
 ## About the Project
 This project demonstrates how to implement Google reCAPTCHA v2 in an HTML form with PHP backend validation. It includes:
